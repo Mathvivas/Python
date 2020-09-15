@@ -1,0 +1,6 @@
+Dia = input("O que você comeu hoje?: ").lower()
+print(Dia)
+print("pizza" in Dia)
+print("carne" in Dia)
+print("arroz" in Dia)
+print("tomate" in Dia)
