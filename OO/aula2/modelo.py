@@ -44,11 +44,22 @@ class Serie(Programa):
         return f'{self._nome} - {self.ano} - {self.temporadas} - {self._likes} Likes'
 
 
-# Playlist herda de list, agora é iterável
-class Playlist(list):
+class Playlist:
     def __init__(self, nome, programas):
         self.nome = nome
-        super().__init__(programas)
+        self._programas = programas
+
+    # Método que permite que a Classe seja considerada um objeto iterável (Duck Typing)
+    def __getitem__(self, item):
+        return self._programas[item]
+
+    @property
+    def listagem(self):
+        return self._programas
+
+    # Classe se comporta como um objeto sized (com tamanho)
+    def __len__(self):
+        return len(self._programas)
 
 
 vingadores = Filme('Vingadores - Guerra Infinita', 2018, 160)
