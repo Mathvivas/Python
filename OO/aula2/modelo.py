@@ -19,7 +19,7 @@ class Programa:
     def nome(self, novo_nome):
         self._nome = novo_nome.title()
 
-    ## toString()
+    ## toString()   (JAVA)
     def __str__(self):
         return f'{self._nome} - {self.ano} - {self._likes} Likes'
 
@@ -29,7 +29,7 @@ class Filme(Programa):
         super().__init__(nome, ano)     # Chama o construtor da mãe
         self.duracao = duracao
 
-    ### Override
+    ### Override (JAVA)
     def __str__(self):
         return f'{self._nome} - {self.ano} - {self.duracao} min - {self._likes} Likes'
 
@@ -39,18 +39,37 @@ class Serie(Programa):
         super().__init__(nome, ano)
         self.temporadas = temporadas
 
-    ### Override
+    ### Override    (JAVA)
     def __str__(self):
         return f'{self._nome} - {self.ano} - {self.temporadas} - {self._likes} Likes'
 
 
+# Playlist herda de list, agora é iterável
+class Playlist(list):
+    def __init__(self, nome, programas):
+        self.nome = nome
+        super().__init__(programas)
+
+
 vingadores = Filme('Vingadores - Guerra Infinita', 2018, 160)
-#print(f'Nome: {vingadores.nome} - Ano: {vingadores.ano} - Duração: {vingadores.duracao} - Likes: {vingadores.likes}')
-
+tmep = Filme('Todo Mundo em Pânico', 1999, 100)
+demolidor = Filme('Demolidor', 2016, 2)
 atlanta = Serie('Atlanta', 2018, 2)
-#print(f'Nome: {atlanta.nome} - Ano: {atlanta.ano} - Temporadas: {atlanta.temporadas} - Likes: {atlanta.likes}')
 
-filmes_e_series = [ vingadores, atlanta ]
+vingadores.dar_like()
+vingadores.dar_like()
+vingadores.dar_like()
+tmep.dar_like()
+demolidor.dar_like()
+demolidor.dar_like()
+demolidor.dar_like()
+atlanta.dar_like()
+atlanta.dar_like()
 
-for programa in filmes_e_series:
+filmes_e_series = [ vingadores, atlanta, demolidor, tmep ]
+
+playlist_fim_de_semana = Playlist('fim de semana', filmes_e_series)
+print(f'Tamanho da Playlist: {len(playlist_fim_de_semana)}')
+
+for programa in playlist_fim_de_semana:
     print(programa)
