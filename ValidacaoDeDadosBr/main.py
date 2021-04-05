@@ -1,6 +1,7 @@
 from documento import Documento
 from telefone import Telefone
 from data import Datas
+from cep import BuscaEndereco
 
 ## CPF VÁLIDO: 15316264754
 cpf_exemplo = '15316264754'
@@ -24,3 +25,12 @@ print('Número', celular, sep=' = ')
 data = Datas()
 print('\nData', data, sep=' = ')
 print(data.tempo_de_cadastro())
+
+
+cep = '01001000'
+objeto_cep = BuscaEndereco(cep)
+print('\nCEP', objeto_cep, sep=' = ')
+bairro, cidade, uf = objeto_cep.acessa_via_cep()
+print('Bairro', bairro, sep=' = ')
+print('Cidade', cidade, sep=' = ')
+print('UF', uf, sep=' = ')
