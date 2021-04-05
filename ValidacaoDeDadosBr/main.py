@@ -1,8 +1,11 @@
-from cpf import Cpf
-from cnpj import Cnpj
+from documento import Documento
 
-cpf_exemplo = Cpf('15316264754')
-print('CPF', cpf_exemplo, sep=' = ')
+## CPF VÁLIDO: 15316264754
+cpf_exemplo = '15316264754'
+cpf = Documento.criar_documento(cpf_exemplo)
+print('CPF', cpf, sep=' = ')
 
-cnpj_exemplo = Cnpj('35379838000112')
-print('CNPJ', cnpj_exemplo, sep=' = ')
+## CNPJ VÁLIDA: 35379838000112
+cnpj_exemplo = '35379838000112'
+cnpj = Documento.criar_documento(cnpj_exemplo)
+print('CNPJ', cnpj, sep=' = ')

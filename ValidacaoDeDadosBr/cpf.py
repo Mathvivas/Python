@@ -2,7 +2,6 @@ from validate_docbr import CPF
 
 class Cpf:
     def __init__(self, documento):
-        documento = str(documento)
         if ( self.cpf_eh_valido(documento) ):
             self.cpf = documento
         else:
@@ -12,11 +11,8 @@ class Cpf:
         return self.format_cpf()
 
     def cpf_eh_valido(self, cpf):
-        if ( len(cpf) == 11 ):
-            validador = CPF()
-            return validador.validate(cpf)
-        else:
-            raise ValueError('Quantidade de Dígitos Inválida!!')
+        validador = CPF()
+        return validador.validate(cpf)
 
     def format_cpf(self):
         mascara = CPF()
