@@ -2,12 +2,22 @@ import sys
 
 class Usuario:
 
-    def __init__(self, nome):
+    def __init__(self, nome, carteira):
         self.__nome = nome
+        self.__carteira = carteira
+
+    def propoe_lance(self, leilao, valor):
+        lance = Lance(self, valor)
+        leilao.propoe(lance)
+        self.__carteira -= valor
 
     @property
     def nome(self):
         return self.__nome
+
+    @property
+    def carteira(self):
+        return self.__carteira
 
 
 class Lance:
@@ -31,6 +41,7 @@ class Leilao:
                 self.maior_lance = lance.valor
             if lance.valor < self.menor_lance:
                 self.menor_lance = lance.valor
+
             self.__lances.append(lance)
         else:
             raise ValueError('Erro ao propor lance!')
